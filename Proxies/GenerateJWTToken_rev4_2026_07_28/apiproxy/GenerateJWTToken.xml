@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="4" name="GenerateJWTToken">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1785085469305</CreatedAt>
+  <LastModifiedAt>1785085469305</LastModifiedAt>
+  <BasePaths>/generate_token</BasePaths>
+  <Policies>
+    <Policy>KVM-GetPrivateKey</Policy>
+    <Policy>JWT-GenerateToken</Policy>
+    <Policy>AM-ReturnJWT</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+</APIProxy>

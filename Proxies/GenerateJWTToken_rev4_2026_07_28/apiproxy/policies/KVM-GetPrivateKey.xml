@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations mapIdentifier="JWT-Keys" async="false" continueOnError="false" enabled="true" name="KVM-GetPrivateKey">
+  <DisplayName>KVM-GetPrivateKey</DisplayName>
+  <Get assignTo="private.jwt_private_key">
+    <Key>
+      <Parameter>private-key</Parameter>
+    </Key>
+  </Get>
+  <Scope>environment</Scope>
+</KeyValueMapOperations>

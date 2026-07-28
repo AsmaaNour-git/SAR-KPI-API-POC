@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>AC-IPWhitelist</Name>
+      </Step>
+      <Step>
+        <Name>RF-MissingMonthParameter</Name>
+        <Condition>request.queryparam.Month is null</Condition>
+      </Step>
+      <Step>
+        <Condition>request.queryparam.Year is null</Condition>
+        <Name>RF-MissingYearParameter</Name>
+      </Step>
+      <Step>
+        <!-- <Condition>!(request.queryparam.Year Matches "^[0-9]{4}$")</Condition> -->
+        <Condition>!(request.queryparam.Year Matches "[0-9]{4}")</Condition>
+        <!-- <Condition>request.queryparam.Year JavaRegex "^[0-9]{4}$" = false</Condition> -->
+        <Name>RF-InvalidYearParameter</Name>
+      </Step>
+      <Step>
+        <Name>AM-GenerateCorrelationID</Name>
+      </Step>
+      <Step>
+        <Name>SA-SpikeArrest</Name>
+      </Step>
+      <Step>
+        <Name>QT-KPIQuota</Name>
+      </Step>
+      <Step>
+        <Name>SIR-set-integration-request</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>AM-AddCorrelationIDResponse</Name>
+      </Step>
+      <Step>
+        <Name>ML-CloudLogging</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <Flows>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/readkpisdata</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <IntegrationEndpoint>default</IntegrationEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AM-ReturnJWT">
+  <AssignTo createNew="true" transport="http" type="response"/>
+  <Set>
+    <Headers>
+      <Header name="Content-Type">application/json</Header>
+    </Headers>
+    <Payload contentType="application/json">
+{
+    "access_token": "{my_generated_jwt}",
+    "expires_in": 3600,
+    "token_type": "Bearer"
+}
+    </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

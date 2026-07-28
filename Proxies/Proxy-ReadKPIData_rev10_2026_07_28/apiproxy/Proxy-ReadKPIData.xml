@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="10" name="Proxy-ReadKPIData">
+  <DisplayName/>
+  <Description>Provide a secure, centralized API that enables MOT to retrieve railway KPIs in near real-time </Description>
+  <CreatedAt>1785007578345</CreatedAt>
+  <LastModifiedAt>1785007578345</LastModifiedAt>
+  <BasePaths>/readkpisdata</BasePaths>
+  <Policies>
+    <Policy>SIR-set-integration-request</Policy>
+    <Policy>RF-MissingMonthParameter</Policy>
+    <Policy>RF-MissingYearParameter</Policy>
+    <Policy>RF-InvalidYearParameter</Policy>
+    <Policy>AC-IPWhitelist</Policy>
+    <Policy>SA-SpikeArrest</Policy>
+    <Policy>QT-KPIQuota</Policy>
+    <Policy>AM-GenerateCorrelationID</Policy>
+    <Policy>AM-AddCorrelationIDResponse</Policy>
+    <Policy>ML-CloudLogging</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <IntegrationEndpoints>
+    <IntegrationEndpoint>default</IntegrationEndpoint>
+  </IntegrationEndpoints>
+</APIProxy>

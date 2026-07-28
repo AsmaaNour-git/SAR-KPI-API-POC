@@ -1,0 +1,121 @@
+openapi: 3.0.3
+
+info:
+  title: Railway KPI API
+  description: |
+    This API allows the Ministry of Transport (MOT) to retrieve
+    railway Key Performance Indicators (KPIs) from Saudi Arabia Railways (SAR).
+  version: 1.0.0
+
+servers:
+  - url: https://api.sar.gov.sa
+
+tags:
+  - name: KPIs
+    description: Railway KPI operations
+
+paths:
+  /api/v1/kpis:
+    get:
+      tags:
+        - KPIs
+      summary: Retrieve railway KPIs
+      description: Returns KPI data for the specified reporting month and year.
+
+      operationId: getKPIs
+
+      security:
+        - bearerAuth: []
+
+      parameters:
+        - name: month
+          in: query
+          required: true
+          description: Reporting month
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 12
+            example: 3
+
+        - name: year
+          in: query
+          required: true
+          description: Reporting year
+          schema:
+            type: integer
+            example: 2026
+
+      responses:
+        '200':
+          description: KPI data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KPIResponse'
+
+        '400':
+          description: Invalid request
+
+        '401':
+          description: Authentication failed
+
+        '403':
+          description: Unauthorized client
+
+        '404':
+          description: KPI data not found
+
+        '429':
+          description: Too many requests
+
+        '500':
+          description: Internal server error
+
+components:
+
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    KPIResponse:
+      type: object
+      properties:
+        year:
+          type: integer
+          example: 2026
+
+        month:
+          type: integer
+          example: 3
+
+        kpis:
+          $ref: '#/components/schemas/KPI'
+
+    KPI:
+      type: object
+      properties:
+        passengerCount:
+          type: integer
+          example: 1250000
+
+        freightVolume:
+          type: integer
+          example: 860000
+
+        ticketRevenue:
+          type: number
+          example: 54000000
+
+        networkLength:
+          type: number
+          example: 4500
+
+        investmentAmount:
+          type: number
+          example: 3100000000

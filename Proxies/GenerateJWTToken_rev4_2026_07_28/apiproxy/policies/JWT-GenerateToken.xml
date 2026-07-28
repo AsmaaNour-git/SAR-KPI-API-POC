@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT name="JWT-GenerateToken">
+  <DisplayName>JWT-GenerateToken</DisplayName>
+  <Algorithm>RS256</Algorithm>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PrivateKey>
+    <Value ref="private.jwt_private_key"/>
+    <Id>key-1</Id>
+  </PrivateKey>
+  <ExpiresIn>1h</ExpiresIn>
+  <Issuer>apigee</Issuer>
+  <Audience>apigee</Audience>
+  <AdditionalClaims>
+    <Claim name="client_id" ref="request.formparam.client_id"/>
+    <Claim name="scope" ref="request.formparam.scope"/>
+    <Claim name="test_claim" ref="request.formparam.test_claim"/>
+  </AdditionalClaims>
+  <OutputVariable>my_generated_jwt</OutputVariable>
+</GenerateJWT>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging continueOnError="false" enabled="true" name="ML-CloudLogging">
+  <DisplayName>ML-CloudLogging</DisplayName>
+  <Syslog>
+    <Message>
+      <!-- Message.id = {request.header.id} -->
+
+      {
+  "timestamp":"{system.timestamp}",
+  "correlationId":"{correlation.id}",
+  "clientId":"{client_id}",
+  "method":"{request.verb}",
+  "path":"{proxy.pathsuffix}",
+  "status":"{response.status.code}",
+  "clientIp":"{client.ip}",
+  "responseTime":"{client.received.end.timestamp}"
+}
+
+    </Message>
+      <Host>IP</Host>
+      <Port>556</Port>
+    </Syslog>
+  </MessageLogging>
