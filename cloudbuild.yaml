@@ -1,17 +1,11 @@
-Checkout code
+steps:
 
-↓
+1. Zip the apiproxy folder
 
-Authenticate
+2. Authenticate with Google Cloud
 
-↓
+3. Import the proxy
 
-Package apiproxy
+4. Deploy the new revision
 
-↓
-
-Import new revision
-
-↓
-
-Deploy to test environment
+5. Print deployment result
